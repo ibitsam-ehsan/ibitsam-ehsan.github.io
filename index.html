@@ -18,40 +18,81 @@
             background-color: #f7fafc;
         }
 
+        /* Navigation Bar */
+        .navbar {
+            background: #1a365d;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+        .nav-container a:hover {
+            background: #2b6cb0;
+        }
+
+        /* Header */
         header {
             background: linear-gradient(135deg, #1a365d, #2b6cb0);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
         }
-
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-
         header p {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-bottom: 1rem;
         }
-
-        .contact-bar {
+        .citations {
             margin-top: 1rem;
+            font-size: 1rem;
+        }
+        .citations span {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0 0.3rem;
+            display: inline-block;
         }
 
-        .contact-bar a {
+        /* Social Links */
+        .social-links {
+            margin-top: 1.5rem;
+        }
+        .social-links a {
             color: white;
             text-decoration: none;
             margin: 0 0.5rem;
-            padding: 0.3rem 0.8rem;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 25px;
+            display: inline-block;
+            transition: all 0.3s;
         }
-
-        .contact-bar a:hover {
+        .social-links a:hover {
             background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
 
         .container {
@@ -66,6 +107,7 @@
             padding: 1.8rem;
             border-radius: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            scroll-margin-top: 80px;
         }
 
         h2 {
@@ -80,7 +122,6 @@
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-
         .interest-tag {
             background: #e2e8f0;
             padding: 0.4rem 1rem;
@@ -95,17 +136,14 @@
             padding-bottom: 0.8rem;
             border-bottom: 1px solid #e2e8f0;
         }
-
         .title {
             font-weight: bold;
             font-size: 1.1rem;
             color: #1a365d;
         }
-
-        .institution, .date, .venue {
+        .institution, .date {
             color: #4a5568;
             font-size: 0.9rem;
-            margin: 0.2rem 0;
         }
 
         .project-item {
@@ -114,23 +152,27 @@
             margin-bottom: 0.8rem;
             border-radius: 8px;
         }
+        .project-item a {
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+        .project-item a:hover {
+            text-decoration: underline;
+        }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1rem;
         }
-
         .skill-category h3 {
             color: #2b6cb0;
             margin-bottom: 0.5rem;
         }
-
         .skill-category ul {
             list-style: none;
             padding-left: 0;
         }
-
         .skill-category li {
             display: inline-block;
             background: #edf2f7;
@@ -140,13 +182,16 @@
             font-size: 0.85rem;
         }
 
-        .publication-item a, .project-item a {
+        .publication-item a {
             color: #2b6cb0;
             text-decoration: none;
         }
-
-        .publication-item a:hover, .project-item a:hover {
+        .publication-item a:hover {
             text-decoration: underline;
+        }
+        .pub-link {
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
         }
 
         footer {
@@ -165,27 +210,55 @@
             header h1 {
                 font-size: 1.8rem;
             }
+            .nav-container {
+                gap: 0.5rem;
+            }
+            .nav-container a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="nav-container">
+        <a href="#home">Home</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<!-- Header -->
+<header id="home">
     <h1>Ibtisam Ehsan</h1>
     <p>Graduate Research Assistant | Information Security Researcher</p>
     <p>University of Chinese Academy of Sciences, Beijing, China</p>
-    <div class="contact-bar">
+    <div class="citations">
+        <span>📊 307 Citations</span>
+        <span>📈 h-index: 4</span>
+        <span>⭐ i10-index: 3</span>
+    </div>
+    <div class="social-links">
+        <a href="https://github.com/ibitsam-ehsan" target="_blank">🐙 GitHub</a>
+        <a href="https://scholar.google.com/citations?user=YOUR_USER_ID" target="_blank">🎓 Google Scholar</a>
+        <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank">🔗 LinkedIn</a>
+        <a href="https://orcid.org/0000-0003-1804-8670" target="_blank">📝 ORCID</a>
         <a href="mailto:ibtisamEhsan146@gmail.com">📧 Email</a>
-        <a href="#">🔗 Google Scholar</a>
-        <a href="https://github.com/ibitsam-ehsan">🐙 GitHub</a>
-        <a href="#">📝 ORCID</a>
     </div>
 </header>
 
 <div class="container">
     
+    <!-- Research Interests -->
     <section>
-        <h2>Research Interests</h2>
+        <h2>🔬 Research Interests</h2>
         <div class="research-interests">
             <span class="interest-tag">Machine Learning Security</span>
             <span class="interest-tag">Privacy-Preserving Machine Learning</span>
@@ -196,8 +269,9 @@
         </div>
     </section>
 
-    <section>
-        <h2>Education</h2>
+    <!-- Education -->
+    <section id="education">
+        <h2>🎓 Education</h2>
         <div class="education-item">
             <div class="title">Postgraduate Student (GRA) in Information Security</div>
             <div class="institution">University of Chinese Academy of Sciences, Beijing, China</div>
@@ -212,8 +286,9 @@
         </div>
     </section>
 
-    <section>
-        <h2>Work Experience</h2>
+    <!-- Experience -->
+    <section id="experience">
+        <h2>💼 Work Experience</h2>
         <div class="experience-item">
             <div class="title">Graduate Research Assistant</div>
             <div class="institution">University of Chinese Academy of Sciences, Beijing, China</div>
@@ -221,8 +296,8 @@
             <ul>
                 <li>Researching machine learning security and privacy, focusing on Membership Inference Attacks</li>
                 <li>Published 5+ peer-reviewed papers on information security and privacy in top journals (IEEE, ACM)</li>
-                <li>Developed and tested defensive techniques against Membership Inference Attacks to enhance model privacy</li>
-                <li>Collaborated on privacy-preserving protocols for ML applications and mentored junior researchers</li>
+                <li>Developed and tested defensive techniques against Membership Inference Attacks</li>
+                <li>Collaborated on privacy-preserving protocols for ML applications</li>
             </ul>
         </div>
         <div class="experience-item">
@@ -230,81 +305,84 @@
             <div class="institution">Magnate Software House, Lahore, Pakistan</div>
             <div class="date">September 2022 - April 2023</div>
             <ul>
-                <li>Developed Machine learning security solutions to improve transparency and reduce fraud in enterprise networks</li>
                 <li>Designed a decentralized identity management system, reducing user verification time by 30%</li>
-                <li>Conducted performance testing of consensus algorithms, optimizing transaction speed and security</li>
-            </ul>
-        </div>
-        <div class="experience-item">
-            <div class="title">Research Assistant</div>
-            <div class="institution">University of Sialkot, Sialkot, Pakistan</div>
-            <div class="date">August 2020 - August 2021</div>
-            <ul>
-                <li>Conducted in-depth research on Blockchain and IoT technologies, focusing on decentralized systems</li>
-                <li>Assisted in designing proof-of-concept systems for various IoT applications</li>
+                <li>Conducted performance testing of consensus algorithms</li>
             </ul>
         </div>
     </section>
 
-    <section>
-        <h2>Theses</h2>
-        <div class="publication-item">
-            <div class="title">Master's Thesis: Hybrid Gradient Approximation Noise Injection for Robust Membership Privacy in ML</div>
-            <div>Submitted and Under Review (IEEE TIFS, Q1) - August 2025</div>
+    <!-- Projects -->
+    <section id="projects">
+        <h2>📁 Research Projects</h2>
+        <div class="project-item">
+            <strong>Real-Time Driver Drowsiness Alert Mechanism (RTDDAM)</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/RTDDAM" target="_blank">🔗 GitHub Repository</a>
         </div>
-        <div class="publication-item">
-            <div class="title">Bachelor's Thesis: Internet of Things-Based Fire Alarm Navigation System</div>
-            <div>Published in Journal of Mobile Information Systems | <a href="#">Publication Link</a></div>
+        <div class="project-item">
+            <strong>Pharmaceutical Drug Supply Chain Security using IoT, AI, and Blockchain</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/Pharma-Supply-Chain" target="_blank">🔗 GitHub Repository</a>
         </div>
-    </section>
-
-    <section>
-        <h2>Journal Publications</h2>
-        <div class="publication-item">
-            <div>Ehsan, M. Irfan Khalid, L. Ricci, J. Iqbal, A. Alabrah, S. Sajid Ullah, & Co-authors (2022). <strong>A Conceptual Model for Blockchain-Based Agriculture Food Supply Chain System</strong>. <em>Scientific Programming</em>, 2022(1), 7358354. <a href="#">Link</a></div>
+        <div class="project-item">
+            <strong>IoT-based Fire Alarm Navigation System</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/IoT-Fire-Alarm" target="_blank">🔗 GitHub Repository</a>
         </div>
-        <div class="publication-item">
-            <div>M. Irfan Khalid, <strong>I. Ehsan</strong>, A. K. Al-ani, J. Iqbal, S. Hussain, & S. S. Ullah (2023). <strong>A Comprehensive Survey on Blockchain-Based Decentralized Storage Networks</strong>. <em>IEEE Access</em>, 11, 10995-11015. <a href="#">Link</a></div>
+        <div class="project-item">
+            <strong>Chain Links on Wheels: IoV Security via Blockchain Integration</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/IoV-Blockchain-Security" target="_blank">🔗 GitHub Repository</a>
         </div>
-        <div class="publication-item">
-            <div><strong>I. Ehsan</strong>, A. Mumtaz, M. Irfan Khalid, J. Iqbal, S. Hussain, S. S. Ullah, & F. Umar (2022). <strong>Internet of Things-Based Fire Alarm Navigation System: A Fire-Rescue Department Perspective</strong>. <em>Mobile Information Systems</em>, 2022(1), 3830372. <a href="#">Link</a></div>
+        <div class="project-item">
+            <strong>Phishing URL Detection using Machine Learning</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/Phishing-Detection-ML" target="_blank">🔗 GitHub Repository</a>
         </div>
-    </section>
-
-    <section>
-        <h2>Conference Papers</h2>
-        <div class="publication-item">
-            <div><strong>I. Ehsan</strong>, M. Irfan Khalid, M. Helfert, N. Yaqub, & M. Ahmed (2024). <strong>Integrating Privacy and Security in Smart Cities: A Blockchain-based IPFS Framework</strong>. <em>Proceedings of POEM 2024</em>. <a href="#">Link</a></div>
-        </div>
-        <div class="publication-item">
-            <div><strong>I. Ehsan</strong>, M. Irfan Khalid, M. Helfert, & M. Ahmed (2024). <strong>Chain Links on Wheels: A Security Scheme for IoV Connectivity through Blockchain Integration</strong>. <em>Proceedings of ARES 2024, ACM</em>. <a href="#">Link</a></div>
+        <div class="project-item">
+            <strong>DDoS Attack Detection using Machine Learning</strong><br>
+            <a href="https://github.com/ibitsam-ehsan/DDoS-Detection-ML" target="_blank">🔗 GitHub Repository</a>
         </div>
     </section>
 
-    <section>
-        <h2>Under Review</h2>
+    <!-- Publications -->
+    <section id="publications">
+        <h2>📄 Publications</h2>
+        
         <div class="publication-item">
-            <div><strong>I. Ehsan</strong> & Collaborators. <strong>Hybrid Gradient Approximation Noise Injection for Robust Membership Privacy in ML</strong>. <em>IEEE TIFS (Q1)</em></div>
+            <div class="title">A Conceptual Model for Blockchain-Based Agriculture Food Supply Chain System</div>
+            <div>I Ehsan, M Irfan Khalid, L Ricci, J Iqbal, A Alabrah, S Sajid Ullah, ...</div>
+            <div><em>Scientific Programming</em>, 2022 | Cited by: 139</div>
+            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/Blockchain-Agriculture" target="_blank">GitHub</a></div>
         </div>
+
         <div class="publication-item">
-            <div><strong>I. Ehsan</strong> & Collaborators. <strong>Securing IoT-Based WSNs Against Membership Inference Attacks via Adaptive Output Masking</strong>. <em>IEEE Access</em></div>
+            <div class="title">A Comprehensive Survey on Blockchain-Based Decentralized Storage Networks</div>
+            <div>MI Khalid, I Ehsan, AK Al-Ani, J Iqbal, S Hussain, SS Ullah</div>
+            <div><em>IEEE Access</em>, 2023 (Q1, IF: 3.9) | Cited by: 131</div>
+            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/Blockchain-Storage-Survey" target="_blank">GitHub</a></div>
+        </div>
+
+        <div class="publication-item">
+            <div class="title">Internet of Things-Based Fire Alarm Navigation System: A Fire-Rescue Department Perspective</div>
+            <div>I Ehsan, A Mumtaz, MI Khalid, J Iqbal, S Hussain, SS Ullah, F Umar</div>
+            <div><em>Mobile Information Systems</em>, 2022 | Cited by: 32</div>
+            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/IoT-Fire-Alarm" target="_blank">GitHub</a></div>
+        </div>
+
+        <div class="publication-item">
+            <div class="title">Integrating Privacy and Security in Smart Cities: A Blockchain-based IPFS Framework</div>
+            <div>I Ehsan, MI Khalid, M Helfert, N Yaqub, M Ahmed</div>
+            <div><em>POEM 2024</em> | Cited by: 4</div>
+            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/SmartCity-Blockchain-IPFS" target="_blank">GitHub</a></div>
+        </div>
+
+        <div class="publication-item">
+            <div class="title">Chain Links on Wheels: A Security Scheme for IoV Connectivity through Blockchain Integration</div>
+            <div>I Ehsan, MI Khalid, M Helfert, M Ahmed</div>
+            <div><em>ARES 2024, ACM</em> | Cited by: 1</div>
+            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/IoV-Blockchain-Security" target="_blank">GitHub</a></div>
         </div>
     </section>
 
-    <section>
-        <h2>Projects</h2>
-        <div class="skills-grid">
-            <div class="project-item">Real-Time Driver Drowsiness Alert Mechanism (RTDDAM)</div>
-            <div class="project-item">Pharmaceutical Drug Supply Chain Security using IoT, AI, and Blockchain</div>
-            <div class="project-item">IoT-based Fire Alarm Navigation System and Application</div>
-            <div class="project-item">Chain Links on Wheels: IoV Security via Blockchain Integration</div>
-            <div class="project-item">Phishing URL Detection using Python and Machine Learning</div>
-            <div class="project-item">DDoS Attack Detection using Machine Learning</div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Skills</h2>
+    <!-- Skills -->
+    <section id="skills">
+        <h2>🛠️ Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-category">
                 <h3>Programming</h3>
@@ -322,59 +400,38 @@
                 <h3>Blockchain</h3>
                 <ul><li>Ethereum</li><li>Smart Contracts</li><li>IPFS</li><li>Consensus Algorithms</li></ul>
             </div>
-            <div class="skill-category">
-                <h3>Web Development</h3>
-                <ul><li>Django</li><li>React</li><li>REST APIs</li><li>HTML/CSS</li></ul>
-            </div>
         </div>
     </section>
 
+    <!-- Awards -->
     <section>
-        <h2>Certifications & Awards</h2>
+        <h2>🏆 Awards & Achievements</h2>
         <ul>
-            <li><strong>ASNO Scholarship for Young Researchers</strong> - Alliance of International Science Organizations, China (August 2023)</li>
-            <li><strong>290+ Citations on Google Scholar</strong> - Academic Recognition (May 2024)</li>
-            <li><strong>2nd Position - Innovative Final Year Project Competition</strong> - Ignite National Technology Fund, Pakistan (May 2022)</li>
-            <li>Introduction to Cybersecurity - IBM via Coursera (2023)</li>
-            <li>IELTS Academic: 6.5 (Listening: 7.0, Reading: 5.5, Speaking: 6.5, Writing: 6.0)</li>
+            <li><strong>ASNO Scholarship for Young Researchers</strong> - Alliance of International Science Organizations, China (2023)</li>
+            <li><strong>307+ Citations</strong> on Google Scholar (May 2024)</li>
+            <li><strong>2nd Position</strong> - Innovative Final Year Project Competition, Ignite National Technology Fund, Pakistan (2022)</li>
         </ul>
     </section>
 
-    <section>
-        <h2>Conferences & Workshops</h2>
-        <ul>
-            <li>IEEE ARES 2024</li>
-            <li>POEM 2024</li>
-            <li>WCSP 2023 - Nanjing, China</li>
-            <li>IEEE ICCC 2023 - Shenzhen, China</li>
-            <li>China Blockchain Conference & Expo 2023 - Shanghai</li>
-            <li>ICAIS 2022 - Qingdao, China</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>References</h2>
-        <div class="education-item">
-            <div class="title">Prof. Muhammad Irfan Khalid</div>
-            <div>Associate Professor, University of Salerno, Fisciano, Italy</div>
-            <div>Email: mkhalid@unisa.it</div>
-        </div>
-        <div class="education-item">
-            <div class="title">Dr. Asia Mumtaz</div>
-            <div>Assistant Professor & Supervisor, University of Sialkot, Pakistan</div>
-            <div>Email: asia.mumtaz@usk.edu.pk</div>
-        </div>
-        <div class="education-item">
-            <div class="title">Dr. Muhammad Azeem</div>
-            <div>Associate Professor & HOD, University of Sialkot, Pakistan</div>
-            <div>Email: muhammad.azeem@usk.edu.pk</div>
+    <!-- Contact -->
+    <section id="contact">
+        <h2>📬 Contact</h2>
+        <p><strong>Email:</strong> ibtisamEhsan146@gmail.com</p>
+        <p><strong>Phone (China):</strong> +86 1580 129 9481</p>
+        <p><strong>Phone (Pakistan):</strong> +92 334 7019009</p>
+        <p><strong>Address:</strong> University of Chinese Academy of Sciences, Beijing, China</p>
+        <div class="social-links" style="margin-top:1rem; padding:0">
+            <a href="https://github.com/ibitsam-ehsan" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">🐙 GitHub</a>
+            <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">🔗 LinkedIn</a>
+            <a href="https://orcid.org/0000-0003-1804-8670" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">📝 ORCID</a>
+            <a href="mailto:ibtisamEhsan146@gmail.com" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">📧 Email</a>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>Ibtisam Ehsan | Graduate Research Assistant, UCAS Beijing | Last updated: April 2026</p>
-    <p>📞 +86 1580 129 9481 | 📧 ibtisamEhsan146@gmail.com</p>
+    <p>© 2026 Ibtisam Ehsan | Graduate Research Assistant, UCAS Beijing</p>
+    <p>Last updated: April 2026 | 307+ Citations</p>
 </footer>
 
 </body>
