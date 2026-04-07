@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ibtisam Ehsan | Information Security Researcher</title>
     <style>
         * {
@@ -12,621 +12,594 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background-color: #f7fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #111827;
+            background-color: #f9fafb;
         }
 
-        /* Navigation Bar */
+        /* Container - fluid width with max */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 16px;
+        }
+
+        /* Desktop container */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+        }
+
+        /* Navigation - hamburger for mobile */
         .navbar {
-            background: #1a365d;
-            padding: 1rem 0;
+            background: white;
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e5e7eb;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
         }
         .nav-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 0 16px;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            padding: 0 1rem;
-        }
-        .nav-container a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s;
-            border-radius: 5px;
-        }
-        .nav-container a:hover {
-            background: #2b6cb0;
-        }
-
-        /* Header with Profile Photo */
-        header {
-            background: linear-gradient(135deg, #1a365d, #2b6cb0);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        .profile-container {
-            display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #111827;
+        }
+        .nav-links {
+            display: none;
             gap: 1.5rem;
         }
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #111827;
+        }
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #111827;
+        }
+
+        @media (min-width: 768px) {
+            .menu-btn {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        /* Mobile menu open */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 16px 0 0 0;
+            gap: 0.75rem;
+        }
+        .nav-links.open a {
+            padding: 8px 0;
+        }
+
+        /* Header */
+        header {
+            padding: 48px 0 32px 0;
+            text-align: center;
+            background: white;
+        }
         .profile-photo {
-            width: 180px;
-            height: 180px;
+            width: 128px;
+            height: 128px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
         }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .subtitle {
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 12px;
         }
         .citations {
-            margin-top: 1rem;
+            margin: 16px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
         }
         .citations span {
-            background: rgba(255,255,255,0.2);
-            padding: 0.3rem 0.8rem;
+            background: #f3f4f6;
+            padding: 4px 12px;
             border-radius: 20px;
-            margin: 0 0.3rem;
-            display: inline-block;
+            font-size: 0.8rem;
+            color: #374151;
         }
         .social-links {
-            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
         }
         .social-links a {
-            color: white;
+            color: #4b5563;
             text-decoration: none;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            background: #f3f4f6;
             border-radius: 25px;
-            display: inline-block;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         .social-links a:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            background: #e5e7eb;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        /* Sections */
         section {
             background: white;
-            margin-bottom: 2rem;
-            padding: 1.8rem;
-            border-radius: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            scroll-margin-top: 80px;
+            margin: 20px 0;
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            scroll-margin-top: 70px;
         }
-
         h2 {
-            color: #2b6cb0;
-            border-bottom: 3px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
         }
 
+        /* Tags */
         .research-interests {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 8px;
         }
         .interest-tag {
-            background: #e2e8f0;
-            padding: 0.4rem 1rem;
+            background: #f3f4f6;
+            padding: 6px 14px;
             border-radius: 25px;
-            font-size: 0.9rem;
-            color: #2b6cb0;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: #374151;
         }
 
-        /* Publication Card with Image */
+        /* Publication Cards - fully mobile first */
         .publication-card {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-            align-items: flex-start;
+            display: block;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
         }
         .pub-image {
-            width: 80px;
-            height: 110px;
+            width: 100%;
+            height: auto;
+            max-height: 180px;
             object-fit: cover;
-            border-radius: 5px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .pub-content {
-            flex: 1;
+            border-radius: 8px;
+            margin-bottom: 12px;
         }
         .pub-title {
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1rem;
-            color: #1a365d;
+            color: #111827;
+            margin-bottom: 6px;
+            line-height: 1.4;
         }
         .pub-authors {
-            font-size: 0.85rem;
-            color: #4a5568;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 4px;
         }
         .pub-venue {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #2b6cb0;
+            font-size: 0.8rem;
+            color: #3b82f6;
+            margin-bottom: 8px;
         }
         .pub-link {
-            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
         }
         .pub-link a {
-            color: #2b6cb0;
+            color: #3b82f6;
             text-decoration: none;
-            font-size: 0.85rem;
-            margin-right: 1rem;
-            padding: 0.2rem 0.5rem;
-            background: #e2e8f0;
-            border-radius: 15px;
-        }
-        .pub-link a:hover {
-            background: #2b6cb0;
-            color: white;
+            font-size: 0.8rem;
+            background: #eff6ff;
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
-        /* Certification Card */
+        /* Certification Cards */
         .cert-card {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background: #f7fafc;
-            border-radius: 10px;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 12px;
             align-items: center;
         }
         .cert-image {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 8px;
             flex-shrink: 0;
         }
         .cert-content {
             flex: 1;
         }
         .cert-title {
-            font-weight: bold;
-            color: #1a365d;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #111827;
         }
         .cert-date {
-            font-size: 0.8rem;
-            color: #718096;
+            font-size: 0.7rem;
+            color: #6b7280;
         }
         .cert-link a {
-            color: #2b6cb0;
+            color: #3b82f6;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            background: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 20px;
         }
 
-        /* Project Card */
+        /* Project Cards */
         .project-card {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background: #f7fafc;
-            border-radius: 10px;
             align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
         }
-        .project-image {
-            width: 60px;
-            height: 60px;
-            background: #2b6cb0;
-            border-radius: 8px;
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
         .project-content {
             flex: 1;
         }
+        .project-content strong {
+            font-size: 0.9rem;
+            color: #111827;
+        }
         .project-content a {
-            color: #2b6cb0;
+            color: #3b82f6;
             text-decoration: none;
+            font-size: 0.75rem;
         }
 
+        /* Education & Experience */
         .education-item, .experience-item {
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
         }
         .title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #1a365d;
+            font-weight: 600;
+            color: #111827;
         }
         .institution, .date {
-            color: #4a5568;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin: 4px 0;
         }
 
+        /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
         .skill-category h3 {
-            color: #2b6cb0;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #374151;
         }
         .skill-category ul {
             list-style: none;
-            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .skill-category li {
-            display: inline-block;
-            background: #edf2f7;
-            padding: 0.2rem 0.8rem;
-            margin: 0.2rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            background: #f3f4f6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #374151;
         }
 
         footer {
             text-align: center;
-            padding: 1.5rem;
-            color: #718096;
-            font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 1rem;
+            padding: 32px 16px;
+            font-size: 0.75rem;
+            color: #9ca3af;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            .profile-photo {
+                width: 160px;
+                height: 160px;
             }
-            .publication-card, .cert-card, .project-card {
-                flex-direction: column;
+            h1 {
+                font-size: 2rem;
+            }
+            .pub-image {
+                width: 100px;
+                height: 130px;
+                object-fit: cover;
+                margin-right: 16px;
+                margin-bottom: 0;
+            }
+            .publication-card {
+                display: flex;
+                gap: 16px;
                 align-items: flex-start;
             }
-            .pub-image, .cert-image {
-                width: 100%;
-                height: auto;
-                max-height: 120px;
+            .pub-content {
+                flex: 1;
             }
-            header h1 {
-                font-size: 1.8rem;
+            .cert-image {
+                width: 60px;
+                height: 60px;
             }
-            .profile-photo {
-                width: 130px;
-                height: 130px;
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 640px) and (max-width: 767px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
 <div class="navbar">
     <div class="nav-container">
-        <a href="#home">Home</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <span class="logo">IE</span>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Papers</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
 </div>
 
-<!-- Header with Profile Photo -->
 <header id="home">
-    <div class="profile-container">
+    <div class="container">
         <img src="images/IBTISAM EHSAN_ PHOTO.jpg" alt="Ibtisam Ehsan" class="profile-photo">
-        <div>
-            <h1>Ibtisam Ehsan</h1>
-            <p>Graduate Research Assistant | Information Security Researcher</p>
-            <p>University of Chinese Academy of Sciences, Beijing, China</p>
-            <div class="citations">
-                <span>📊 307+ Citations</span>
-                <span>📈 h-index: 4</span>
-                <span>⭐ i10-index: 3</span>
-            </div>
+        <h1>Ibtisam Ehsan</h1>
+        <div class="subtitle">Graduate Research Assistant | Information Security</div>
+        <div class="subtitle">UCAS, Beijing, China</div>
+        <div class="citations">
+            <span>📊 307+ Citations</span>
+            <span>📈 h-index: 4</span>
+            <span>⭐ i10-index: 3</span>
         </div>
-    </div>
-    <div class="social-links">
-        <a href="https://github.com/ibitsam-ehsan" target="_blank">🐙 GitHub</a>
-        <a href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
-        <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank">🔗 LinkedIn</a>
-        <a href="https://orcid.org/0000-0003-1804-8670" target="_blank">📝 ORCID</a>
-        <a href="mailto:ibtisamEhsan146@gmail.com">📧 Email</a>
+        <div class="social-links">
+            <a href="https://github.com/ibitsam-ehsan" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank">LinkedIn</a>
+            <a href="https://orcid.org/0000-0003-1804-8670" target="_blank">ORCID</a>
+            <a href="mailto:ibtisamEhsan146@gmail.com">Email</a>
+        </div>
     </div>
 </header>
 
 <div class="container">
     
-    <!-- Research Interests -->
     <section>
-        <h2>🔬 Research Interests</h2>
+        <h2>Research Interests</h2>
         <div class="research-interests">
             <span class="interest-tag">Machine Learning Security</span>
-            <span class="interest-tag">Privacy-Preserving Machine Learning</span>
+            <span class="interest-tag">Privacy-Preserving ML</span>
             <span class="interest-tag">Blockchain Security</span>
-            <span class="interest-tag">Decentralized Systems</span>
             <span class="interest-tag">IoT Security</span>
-            <span class="interest-tag">Information Security</span>
+            <span class="interest-tag">Decentralized Systems</span>
         </div>
     </section>
 
-    <!-- Education -->
     <section id="education">
-        <h2>🎓 Education</h2>
+        <h2>Education</h2>
         <div class="education-item">
             <div class="title">Postgraduate Student (GRA) in Information Security</div>
-            <div class="institution">University of Chinese Academy of Sciences, Beijing, China</div>
-            <div class="date">September 2023 - June 2026 | CGPA: 3.85/4.00</div>
-            <div>Thesis: Hybrid Gradient Approximation Noise Injection for Robust Membership Privacy in ML</div>
+            <div class="institution">University of Chinese Academy of Sciences, Beijing</div>
+            <div class="date">Sep 2023 - Jun 2026 | CGPA: 3.85/4.00</div>
         </div>
         <div class="education-item">
-            <div class="title">Bachelor of Science in Information Technology</div>
-            <div class="institution">University of Sialkot, Sialkot, Pakistan</div>
-            <div class="date">August 2018 - August 2022 | CGPA: 3.01/4.00</div>
+            <div class="title">BS in Information Technology</div>
+            <div class="institution">University of Sialkot, Pakistan</div>
+            <div class="date">Aug 2018 - Aug 2022 | CGPA: 3.01/4.00</div>
         </div>
     </section>
 
-    <!-- Experience -->
     <section id="experience">
-        <h2>💼 Work Experience</h2>
+        <h2>Experience</h2>
         <div class="experience-item">
             <div class="title">Graduate Research Assistant</div>
-            <div class="institution">University of Chinese Academy of Sciences, Beijing, China</div>
-            <div class="date">April 2023 - Present</div>
-            <ul>
-                <li>Researching machine learning security and privacy, focusing on Membership Inference Attacks</li>
-                <li>Published 5+ peer-reviewed papers in top journals (IEEE, ACM)</li>
-                <li>Developed and tested defensive techniques against Membership Inference Attacks</li>
+            <div class="institution">UCAS, Beijing, China</div>
+            <div class="date">Apr 2023 - Present</div>
+            <ul style="margin-top: 8px; padding-left: 20px;">
+                <li>Researching ML security & Membership Inference Attacks</li>
+                <li>5+ peer-reviewed papers in IEEE, ACM, Wiley</li>
             </ul>
         </div>
         <div class="experience-item">
-            <div class="title">Information Security Research Intern</div>
-            <div class="institution">Magnate Software House, Lahore, Pakistan</div>
-            <div class="date">September 2022 - April 2023</div>
-            <ul>
-                <li>Designed a decentralized identity management system, reducing user verification time by 30%</li>
-            </ul>
+            <div class="title">Information Security Intern</div>
+            <div class="institution">Magnate Software House, Lahore</div>
+            <div class="date">Sep 2022 - Apr 2023</div>
         </div>
     </section>
 
-    <!-- Publications with Images and Links -->
     <section id="publications">
-        <h2>📄 Publications</h2>
-        
+        <h2>Publications</h2>
+
         <div class="publication-card">
-            <img src="images/agricultural food supplychain paper.png" alt="Agriculture Paper" class="pub-image">
+            <img src="images/agricultural food supplychain paper.png" class="pub-image">
             <div class="pub-content">
-                <div class="pub-title">A Conceptual Model for Blockchain-Based Agriculture Food Supply Chain System</div>
-                <div class="pub-authors">I Ehsan, M Irfan Khalid, L Ricci, J Iqbal, A Alabrah, S Sajid Ullah</div>
-                <div class="pub-venue">Scientific Programming, 2022 | Cited by: 139</div>
-                <div class="pub-link">
-                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/7358354" target="_blank">🔗 Wiley Link</a>
-                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
-                </div>
+                <div class="pub-title">Blockchain-Based Agriculture Food Supply Chain System</div>
+                <div class="pub-authors">I Ehsan, MI Khalid, L Ricci, J Iqbal, et al.</div>
+                <div class="pub-venue">Scientific Programming 2022 | 139 citations</div>
+                <div class="pub-link"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/7358354" target="_blank">Wiley</a><a href="#">GitHub</a></div>
             </div>
         </div>
 
         <div class="publication-card">
-            <img src="images/IEEE acess decentralized storage networks.png" alt="IEEE Survey Paper" class="pub-image">
+            <img src="images/IEEE acess decentralized storage networks.png" class="pub-image">
             <div class="pub-content">
-                <div class="pub-title">A Comprehensive Survey on Blockchain-Based Decentralized Storage Networks</div>
-                <div class="pub-authors">MI Khalid, I Ehsan, AK Al-Ani, J Iqbal, S Hussain, SS Ullah</div>
-                <div class="pub-venue">IEEE Access, 2023 (Q1) | Cited by: 131</div>
-                <div class="pub-link">
-                    <a href="https://ieeexplore.ieee.org/abstract/document/10026822/" target="_blank">🔗 IEEE Link</a>
-                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
-                </div>
+                <div class="pub-title">Blockchain-Based Decentralized Storage Networks (Survey)</div>
+                <div class="pub-authors">MI Khalid, I Ehsan, AK Al-Ani, J Iqbal, et al.</div>
+                <div class="pub-venue">IEEE Access 2023 (Q1) | 131 citations</div>
+                <div class="pub-link"><a href="https://ieeexplore.ieee.org/abstract/document/10026822/" target="_blank">IEEE</a><a href="#">GitHub</a></div>
             </div>
         </div>
 
         <div class="publication-card">
-            <img src="images/IOT based fire alarm navigation.png" alt="IoT Fire Alarm Paper" class="pub-image">
+            <img src="images/IOT based fire alarm navigation.png" class="pub-image">
             <div class="pub-content">
-                <div class="pub-title">Internet of Things-Based Fire Alarm Navigation System</div>
-                <div class="pub-authors">I Ehsan, A Mumtaz, MI Khalid, J Iqbal, S Hussain, SS Ullah, F Umar</div>
-                <div class="pub-venue">Mobile Information Systems, 2022 | Cited by: 32</div>
-                <div class="pub-link">
-                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/3830372" target="_blank">🔗 Wiley Link</a>
-                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
-                </div>
+                <div class="pub-title">IoT-Based Fire Alarm Navigation System</div>
+                <div class="pub-authors">I Ehsan, A Mumtaz, MI Khalid, J Iqbal, et al.</div>
+                <div class="pub-venue">Mobile Information Systems 2022 | 32 citations</div>
+                <div class="pub-link"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/3830372" target="_blank">Wiley</a><a href="#">GitHub</a></div>
             </div>
         </div>
 
         <div class="publication-card">
-            <img src="images/IPFS paper.png" alt="IPFS Smart Cities Paper" class="pub-image">
+            <img src="images/IPFS paper.png" class="pub-image">
             <div class="pub-content">
-                <div class="pub-title">Integrating Privacy and Security in Smart Cities: A Blockchain-based IPFS Framework</div>
+                <div class="pub-title">Privacy & Security in Smart Cities: Blockchain-IPFS Framework</div>
                 <div class="pub-authors">I Ehsan, MI Khalid, M Helfert, N Yaqub, M Ahmed</div>
-                <div class="pub-venue">POEM 2024 | Cited by: 4</div>
-                <div class="pub-link">
-                    <a href="https://www.researchgate.net/publication/385350592_Integrating_Privacy_and_Security_in_Smart_Cities_A_Blockchain-based_IPFS_Framework" target="_blank">🔗 ResearchGate Link</a>
-                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
-                </div>
+                <div class="pub-venue">POEM 2024 | 4 citations</div>
+                <div class="pub-link"><a href="https://www.researchgate.net/publication/385350592_Integrating_Privacy_and_Security_in_Smart_Cities_A_Blockchain-based_IPFS_Framework" target="_blank">ResearchGate</a><a href="#">GitHub</a></div>
             </div>
         </div>
 
         <div class="publication-card">
-            <img src="images/ioV paper.png" alt="IoV Blockchain Paper" class="pub-image">
+            <img src="images/ioV paper.png" class="pub-image">
             <div class="pub-content">
-                <div class="pub-title">Chain Links on Wheels: A Security Scheme for IoV Connectivity through Blockchain Integration</div>
+                <div class="pub-title">Chain Links on Wheels: IoV Security via Blockchain</div>
                 <div class="pub-authors">I Ehsan, MI Khalid, M Helfert, M Ahmed</div>
-                <div class="pub-venue">ARES 2024, ACM | Cited by: 1</div>
-                <div class="pub-link">
-                    <a href="https://dl.acm.org/doi/abs/10.1145/3664476.3670457" target="_blank">🔗 ACM Link</a>
-                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
-                </div>
+                <div class="pub-venue">ARES 2024, ACM | 1 citation</div>
+                <div class="pub-link"><a href="https://dl.acm.org/doi/abs/10.1145/3664476.3670457" target="_blank">ACM</a><a href="#">GitHub</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications with Images and Links -->
     <section id="certifications">
-        <h2>📜 Certifications</h2>
+        <h2>Certifications</h2>
 
         <div class="cert-card">
-            <img src="images/IBM certificate.png" alt="IBM Certificate" class="cert-image">
+            <img src="images/IBM certificate.png" class="cert-image">
             <div class="cert-content">
-                <div class="cert-title">Introduction to Cybersecurity Tools & Cyber Attacks</div>
-                <div class="cert-date">IBM via Coursera | January 31, 2023</div>
+                <div class="cert-title">Intro to Cybersecurity Tools & Cyber Attacks</div>
+                <div class="cert-date">IBM | Jan 31, 2023</div>
             </div>
-            <div class="cert-link">
-                <a href="https://coursera.org/verify/VFAJWWQG2V7N" target="_blank">🔗 Verify</a>
-            </div>
+            <div class="cert-link"><a href="https://coursera.org/verify/VFAJWWQG2V7N" target="_blank">Verify</a></div>
         </div>
 
         <div class="cert-card">
-            <img src="images/intro to cyber security essentials.png" alt="Cybersecurity Essentials" class="cert-image">
+            <img src="images/intro to cyber security essentials.png" class="cert-image">
             <div class="cert-content">
                 <div class="cert-title">Introduction to Cybersecurity Essentials</div>
-                <div class="cert-date">IBM Skills Network via Coursera | February 2, 2023</div>
+                <div class="cert-date">IBM | Feb 2, 2023</div>
             </div>
-            <div class="cert-link">
-                <a href="https://coursera.org/verify/95G7P3MK63GH" target="_blank">🔗 Verify</a>
-            </div>
+            <div class="cert-link"><a href="https://coursera.org/verify/95G7P3MK63GH" target="_blank">Verify</a></div>
         </div>
 
         <div class="cert-card">
-            <img src="images/university of colorado.png" alt="University of Colorado Certificate" class="cert-image">
+            <img src="images/university of colorado.png" class="cert-image">
             <div class="cert-content">
                 <div class="cert-title">Introduction to Cybersecurity for Business</div>
-                <div class="cert-date">University of Colorado via Coursera | February 3, 2023</div>
+                <div class="cert-date">Univ of Colorado | Feb 3, 2023</div>
             </div>
-            <div class="cert-link">
-                <a href="https://coursera.org/verify/U889MN29U4MX" target="_blank">🔗 Verify</a>
-            </div>
+            <div class="cert-link"><a href="https://coursera.org/verify/U889MN29U4MX" target="_blank">Verify</a></div>
         </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
-        <h2>📁 Research Projects</h2>
-        
-        <div class="project-card">
-            <div class="project-image">🚗</div>
-            <div class="project-content">
-                <strong>Real-Time Driver Drowsiness Alert Mechanism (RTDDAM)</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">💊</div>
-            <div class="project-content">
-                <strong>Pharmaceutical Drug Supply Chain Security using IoT, AI, and Blockchain</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">🔥</div>
-            <div class="project-content">
-                <strong>IoT-based Fire Alarm Navigation System</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">🔗</div>
-            <div class="project-content">
-                <strong>Chain Links on Wheels: IoV Security via Blockchain Integration</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">🎣</div>
-            <div class="project-content">
-                <strong>Phishing URL Detection using Python and Machine Learning</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">⚠️</div>
-            <div class="project-content">
-                <strong>DDoS Attack Detection using Machine Learning</strong><br>
-                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
-            </div>
-        </div>
+        <h2>Projects</h2>
+        <div class="project-card"><div class="project-icon">🚗</div><div class="project-content"><strong>Real-Time Driver Drowsiness Alert (RTDDAM)</strong><br><a href="#">GitHub</a></div></div>
+        <div class="project-card"><div class="project-icon">💊</div><div class="project-content"><strong>Pharmaceutical Supply Chain Security</strong><br><a href="#">GitHub</a></div></div>
+        <div class="project-card"><div class="project-icon">🔥</div><div class="project-content"><strong>IoT Fire Alarm Navigation System</strong><br><a href="#">GitHub</a></div></div>
+        <div class="project-card"><div class="project-icon">🔗</div><div class="project-content"><strong>IoV Security via Blockchain</strong><br><a href="#">GitHub</a></div></div>
+        <div class="project-card"><div class="project-icon">🎣</div><div class="project-content"><strong>Phishing URL Detection (ML)</strong><br><a href="#">GitHub</a></div></div>
+        <div class="project-card"><div class="project-icon">⚠️</div><div class="project-content"><strong>DDoS Attack Detection (ML)</strong><br><a href="#">GitHub</a></div></div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
-        <h2>🛠️ Technical Skills</h2>
+        <h2>Skills</h2>
         <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Programming</h3>
-                <ul><li>Python</li><li>JavaScript</li><li>SQL</li><li>Java</li><li>C++</li><li>Solidity</li></ul>
-            </div>
-            <div class="skill-category">
-                <h3>Machine Learning</h3>
-                <ul><li>TensorFlow</li><li>PyTorch</li><li>Scikit-learn</li><li>Neural Networks</li></ul>
-            </div>
-            <div class="skill-category">
-                <h3>Security Tools</h3>
-                <ul><li>Wireshark</li><li>Metasploit</li><li>Burp Suite</li><li>Nmap</li><li>Snort</li></ul>
-            </div>
-            <div class="skill-category">
-                <h3>Blockchain</h3>
-                <ul><li>Ethereum</li><li>Smart Contracts</li><li>IPFS</li><li>Consensus Algorithms</li></ul>
-            </div>
+            <div class="skill-category"><h3>Programming</h3><ul><li>Python</li><li>JavaScript</li><li>Solidity</li><li>Java</li></ul></div>
+            <div class="skill-category"><h3>ML & AI</h3><ul><li>TensorFlow</li><li>PyTorch</li><li>Scikit-learn</li></ul></div>
+            <div class="skill-category"><h3>Security</h3><ul><li>Wireshark</li><li>Metasploit</li><li>Burp Suite</li></ul></div>
+            <div class="skill-category"><h3>Blockchain</h3><ul><li>Ethereum</li><li>Smart Contracts</li><li>IPFS</li></ul></div>
         </div>
     </section>
 
-    <!-- Awards -->
-    <section>
-        <h2>🏆 Awards & Achievements</h2>
-        <ul>
-            <li><strong>ASNO Scholarship for Young Researchers</strong> - Alliance of International Science Organizations, China (2023)</li>
-            <li><strong>307+ Citations</strong> on Google Scholar (May 2024)</li>
-            <li><strong>2nd Position</strong> - Innovative Final Year Project Competition, Ignite National Technology Fund, Pakistan (2022)</li>
-        </ul>
-    </section>
-
-    <!-- Contact -->
     <section id="contact">
-        <h2>📬 Contact</h2>
-        <p><strong>Email:</strong> ibtisamEhsan146@gmail.com</p>
-        <p><strong>Phone (China):</strong> +86 1580 129 9481</p>
-        <p><strong>Phone (Pakistan):</strong> +92 334 7019009</p>
-        <p><strong>Address:</strong> University of Chinese Academy of Sciences, Beijing, China</p>
+        <h2>Contact</h2>
+        <p>📧 ibtisamEhsan146@gmail.com</p>
+        <p>📞 +86 1580 129 9481 | +92 334 7019009</p>
+        <p>📍 UCAS, Beijing, China</p>
     </section>
 </div>
 
 <footer>
-    <p>© 2026 Ibtisam Ehsan | Graduate Research Assistant, UCAS Beijing</p>
-    <p>Last updated: April 2026 | 307+ Citations</p>
+    <p>© 2026 Ibtisam Ehsan | Last updated: April 2026</p>
 </footer>
+
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('open');
+    }
+</script>
 
 </body>
 </html>
