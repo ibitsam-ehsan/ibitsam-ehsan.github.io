@@ -48,12 +48,26 @@
             background: #2b6cb0;
         }
 
-        /* Header */
+        /* Header with Profile Photo */
         header {
             background: linear-gradient(135deg, #1a365d, #2b6cb0);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         header h1 {
             font-size: 2.5rem;
@@ -62,11 +76,9 @@
         header p {
             font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 1rem;
         }
         .citations {
             margin-top: 1rem;
-            font-size: 1rem;
         }
         .citations span {
             background: rgba(255,255,255,0.2);
@@ -75,8 +87,6 @@
             margin: 0 0.3rem;
             display: inline-block;
         }
-
-        /* Social Links */
         .social-links {
             margin-top: 1.5rem;
         }
@@ -131,7 +141,122 @@
             font-weight: 500;
         }
 
-        .education-item, .experience-item, .publication-item {
+        /* Publication Card with Image */
+        .publication-card {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: flex-start;
+        }
+        .pub-image {
+            width: 80px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pub-content {
+            flex: 1;
+        }
+        .pub-title {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #1a365d;
+        }
+        .pub-authors {
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+        .pub-venue {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #2b6cb0;
+        }
+        .pub-link {
+            margin-top: 0.5rem;
+        }
+        .pub-link a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-right: 1rem;
+            padding: 0.2rem 0.5rem;
+            background: #e2e8f0;
+            border-radius: 15px;
+        }
+        .pub-link a:hover {
+            background: #2b6cb0;
+            color: white;
+        }
+
+        /* Certification Card */
+        .cert-card {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f7fafc;
+            border-radius: 10px;
+            align-items: center;
+        }
+        .cert-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+        .cert-content {
+            flex: 1;
+        }
+        .cert-title {
+            font-weight: bold;
+            color: #1a365d;
+        }
+        .cert-date {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+        .cert-link a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        /* Project Card */
+        .project-card {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f7fafc;
+            border-radius: 10px;
+            align-items: center;
+        }
+        .project-image {
+            width: 60px;
+            height: 60px;
+            background: #2b6cb0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .project-content {
+            flex: 1;
+        }
+        .project-content a {
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+
+        .education-item, .experience-item {
             margin-bottom: 1.2rem;
             padding-bottom: 0.8rem;
             border-bottom: 1px solid #e2e8f0;
@@ -144,20 +269,6 @@
         .institution, .date {
             color: #4a5568;
             font-size: 0.9rem;
-        }
-
-        .project-item {
-            background: #f7fafc;
-            padding: 0.8rem;
-            margin-bottom: 0.8rem;
-            border-radius: 8px;
-        }
-        .project-item a {
-            color: #2b6cb0;
-            text-decoration: none;
-        }
-        .project-item a:hover {
-            text-decoration: underline;
         }
 
         .skills-grid {
@@ -182,18 +293,6 @@
             font-size: 0.85rem;
         }
 
-        .publication-item a {
-            color: #2b6cb0;
-            text-decoration: none;
-        }
-        .publication-item a:hover {
-            text-decoration: underline;
-        }
-        .pub-link {
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
-        }
-
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -207,15 +306,21 @@
             .container {
                 padding: 1rem;
             }
+            .publication-card, .cert-card, .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .pub-image, .cert-image {
+                width: 100%;
+                height: auto;
+                max-height: 120px;
+            }
             header h1 {
                 font-size: 1.8rem;
             }
-            .nav-container {
-                gap: 0.5rem;
-            }
-            .nav-container a {
-                font-size: 0.8rem;
-                padding: 0.3rem 0.6rem;
+            .profile-photo {
+                width: 130px;
+                height: 130px;
             }
         }
     </style>
@@ -228,26 +333,32 @@
         <a href="#home">Home</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
     </div>
 </div>
 
-<!-- Header -->
+<!-- Header with Profile Photo -->
 <header id="home">
-    <h1>Ibtisam Ehsan</h1>
-    <p>Graduate Research Assistant | Information Security Researcher</p>
-    <p>University of Chinese Academy of Sciences, Beijing, China</p>
-    <div class="citations">
-        <span>📊 307 Citations</span>
-        <span>📈 h-index: 4</span>
-        <span>⭐ i10-index: 3</span>
+    <div class="profile-container">
+        <img src="images/IBTISAM EHSAN_ PHOTO.jpg" alt="Ibtisam Ehsan" class="profile-photo">
+        <div>
+            <h1>Ibtisam Ehsan</h1>
+            <p>Graduate Research Assistant | Information Security Researcher</p>
+            <p>University of Chinese Academy of Sciences, Beijing, China</p>
+            <div class="citations">
+                <span>📊 307+ Citations</span>
+                <span>📈 h-index: 4</span>
+                <span>⭐ i10-index: 3</span>
+            </div>
+        </div>
     </div>
     <div class="social-links">
         <a href="https://github.com/ibitsam-ehsan" target="_blank">🐙 GitHub</a>
-        <a href="https://scholar.google.com/citations?user=YOUR_USER_ID" target="_blank">🎓 Google Scholar</a>
+        <a href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
         <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank">🔗 LinkedIn</a>
         <a href="https://orcid.org/0000-0003-1804-8670" target="_blank">📝 ORCID</a>
         <a href="mailto:ibtisamEhsan146@gmail.com">📧 Email</a>
@@ -282,7 +393,6 @@
             <div class="title">Bachelor of Science in Information Technology</div>
             <div class="institution">University of Sialkot, Sialkot, Pakistan</div>
             <div class="date">August 2018 - August 2022 | CGPA: 3.01/4.00</div>
-            <div>Major Subjects: Network Security, Blockchain, Software Engineering</div>
         </div>
     </section>
 
@@ -295,9 +405,8 @@
             <div class="date">April 2023 - Present</div>
             <ul>
                 <li>Researching machine learning security and privacy, focusing on Membership Inference Attacks</li>
-                <li>Published 5+ peer-reviewed papers on information security and privacy in top journals (IEEE, ACM)</li>
+                <li>Published 5+ peer-reviewed papers in top journals (IEEE, ACM)</li>
                 <li>Developed and tested defensive techniques against Membership Inference Attacks</li>
-                <li>Collaborated on privacy-preserving protocols for ML applications</li>
             </ul>
         </div>
         <div class="experience-item">
@@ -306,77 +415,168 @@
             <div class="date">September 2022 - April 2023</div>
             <ul>
                 <li>Designed a decentralized identity management system, reducing user verification time by 30%</li>
-                <li>Conducted performance testing of consensus algorithms</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Publications with Images and Links -->
+    <section id="publications">
+        <h2>📄 Publications</h2>
+        
+        <div class="publication-card">
+            <img src="images/agricultural food supplychain paper.png" alt="Agriculture Paper" class="pub-image">
+            <div class="pub-content">
+                <div class="pub-title">A Conceptual Model for Blockchain-Based Agriculture Food Supply Chain System</div>
+                <div class="pub-authors">I Ehsan, M Irfan Khalid, L Ricci, J Iqbal, A Alabrah, S Sajid Ullah</div>
+                <div class="pub-venue">Scientific Programming, 2022 | Cited by: 139</div>
+                <div class="pub-link">
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/7358354" target="_blank">🔗 Wiley Link</a>
+                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="publication-card">
+            <img src="images/IEEE acess decentralized storage networks.png" alt="IEEE Survey Paper" class="pub-image">
+            <div class="pub-content">
+                <div class="pub-title">A Comprehensive Survey on Blockchain-Based Decentralized Storage Networks</div>
+                <div class="pub-authors">MI Khalid, I Ehsan, AK Al-Ani, J Iqbal, S Hussain, SS Ullah</div>
+                <div class="pub-venue">IEEE Access, 2023 (Q1) | Cited by: 131</div>
+                <div class="pub-link">
+                    <a href="https://ieeexplore.ieee.org/abstract/document/10026822/" target="_blank">🔗 IEEE Link</a>
+                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="publication-card">
+            <img src="images/IOT based fire alarm navigation.png" alt="IoT Fire Alarm Paper" class="pub-image">
+            <div class="pub-content">
+                <div class="pub-title">Internet of Things-Based Fire Alarm Navigation System</div>
+                <div class="pub-authors">I Ehsan, A Mumtaz, MI Khalid, J Iqbal, S Hussain, SS Ullah, F Umar</div>
+                <div class="pub-venue">Mobile Information Systems, 2022 | Cited by: 32</div>
+                <div class="pub-link">
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/3830372" target="_blank">🔗 Wiley Link</a>
+                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="publication-card">
+            <img src="images/IPFS paper.png" alt="IPFS Smart Cities Paper" class="pub-image">
+            <div class="pub-content">
+                <div class="pub-title">Integrating Privacy and Security in Smart Cities: A Blockchain-based IPFS Framework</div>
+                <div class="pub-authors">I Ehsan, MI Khalid, M Helfert, N Yaqub, M Ahmed</div>
+                <div class="pub-venue">POEM 2024 | Cited by: 4</div>
+                <div class="pub-link">
+                    <a href="https://www.researchgate.net/publication/385350592_Integrating_Privacy_and_Security_in_Smart_Cities_A_Blockchain-based_IPFS_Framework" target="_blank">🔗 ResearchGate Link</a>
+                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="publication-card">
+            <img src="images/ioV paper.png" alt="IoV Blockchain Paper" class="pub-image">
+            <div class="pub-content">
+                <div class="pub-title">Chain Links on Wheels: A Security Scheme for IoV Connectivity through Blockchain Integration</div>
+                <div class="pub-authors">I Ehsan, MI Khalid, M Helfert, M Ahmed</div>
+                <div class="pub-venue">ARES 2024, ACM | Cited by: 1</div>
+                <div class="pub-link">
+                    <a href="https://dl.acm.org/doi/abs/10.1145/3664476.3670457" target="_blank">🔗 ACM Link</a>
+                    <a href="https://github.com/ibitsam-ehsan" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications with Images and Links -->
+    <section id="certifications">
+        <h2>📜 Certifications</h2>
+
+        <div class="cert-card">
+            <img src="images/IBM certificate.png" alt="IBM Certificate" class="cert-image">
+            <div class="cert-content">
+                <div class="cert-title">Introduction to Cybersecurity Tools & Cyber Attacks</div>
+                <div class="cert-date">IBM via Coursera | January 31, 2023</div>
+            </div>
+            <div class="cert-link">
+                <a href="https://coursera.org/verify/VFAJWWQG2V7N" target="_blank">🔗 Verify</a>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/intro to cyber security essentials.png" alt="Cybersecurity Essentials" class="cert-image">
+            <div class="cert-content">
+                <div class="cert-title">Introduction to Cybersecurity Essentials</div>
+                <div class="cert-date">IBM Skills Network via Coursera | February 2, 2023</div>
+            </div>
+            <div class="cert-link">
+                <a href="https://coursera.org/verify/95G7P3MK63GH" target="_blank">🔗 Verify</a>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/university of colorado.png" alt="University of Colorado Certificate" class="cert-image">
+            <div class="cert-content">
+                <div class="cert-title">Introduction to Cybersecurity for Business</div>
+                <div class="cert-date">University of Colorado via Coursera | February 3, 2023</div>
+            </div>
+            <div class="cert-link">
+                <a href="https://coursera.org/verify/U889MN29U4MX" target="_blank">🔗 Verify</a>
+            </div>
         </div>
     </section>
 
     <!-- Projects -->
     <section id="projects">
         <h2>📁 Research Projects</h2>
-        <div class="project-item">
-            <strong>Real-Time Driver Drowsiness Alert Mechanism (RTDDAM)</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/RTDDAM" target="_blank">🔗 GitHub Repository</a>
-        </div>
-        <div class="project-item">
-            <strong>Pharmaceutical Drug Supply Chain Security using IoT, AI, and Blockchain</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/Pharma-Supply-Chain" target="_blank">🔗 GitHub Repository</a>
-        </div>
-        <div class="project-item">
-            <strong>IoT-based Fire Alarm Navigation System</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/IoT-Fire-Alarm" target="_blank">🔗 GitHub Repository</a>
-        </div>
-        <div class="project-item">
-            <strong>Chain Links on Wheels: IoV Security via Blockchain Integration</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/IoV-Blockchain-Security" target="_blank">🔗 GitHub Repository</a>
-        </div>
-        <div class="project-item">
-            <strong>Phishing URL Detection using Machine Learning</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/Phishing-Detection-ML" target="_blank">🔗 GitHub Repository</a>
-        </div>
-        <div class="project-item">
-            <strong>DDoS Attack Detection using Machine Learning</strong><br>
-            <a href="https://github.com/ibitsam-ehsan/DDoS-Detection-ML" target="_blank">🔗 GitHub Repository</a>
-        </div>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications">
-        <h2>📄 Publications</h2>
         
-        <div class="publication-item">
-            <div class="title">A Conceptual Model for Blockchain-Based Agriculture Food Supply Chain System</div>
-            <div>I Ehsan, M Irfan Khalid, L Ricci, J Iqbal, A Alabrah, S Sajid Ullah, ...</div>
-            <div><em>Scientific Programming</em>, 2022 | Cited by: 139</div>
-            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/Blockchain-Agriculture" target="_blank">GitHub</a></div>
+        <div class="project-card">
+            <div class="project-image">🚗</div>
+            <div class="project-content">
+                <strong>Real-Time Driver Drowsiness Alert Mechanism (RTDDAM)</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
         </div>
 
-        <div class="publication-item">
-            <div class="title">A Comprehensive Survey on Blockchain-Based Decentralized Storage Networks</div>
-            <div>MI Khalid, I Ehsan, AK Al-Ani, J Iqbal, S Hussain, SS Ullah</div>
-            <div><em>IEEE Access</em>, 2023 (Q1, IF: 3.9) | Cited by: 131</div>
-            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/Blockchain-Storage-Survey" target="_blank">GitHub</a></div>
+        <div class="project-card">
+            <div class="project-image">💊</div>
+            <div class="project-content">
+                <strong>Pharmaceutical Drug Supply Chain Security using IoT, AI, and Blockchain</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
         </div>
 
-        <div class="publication-item">
-            <div class="title">Internet of Things-Based Fire Alarm Navigation System: A Fire-Rescue Department Perspective</div>
-            <div>I Ehsan, A Mumtaz, MI Khalid, J Iqbal, S Hussain, SS Ullah, F Umar</div>
-            <div><em>Mobile Information Systems</em>, 2022 | Cited by: 32</div>
-            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/IoT-Fire-Alarm" target="_blank">GitHub</a></div>
+        <div class="project-card">
+            <div class="project-image">🔥</div>
+            <div class="project-content">
+                <strong>IoT-based Fire Alarm Navigation System</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
         </div>
 
-        <div class="publication-item">
-            <div class="title">Integrating Privacy and Security in Smart Cities: A Blockchain-based IPFS Framework</div>
-            <div>I Ehsan, MI Khalid, M Helfert, N Yaqub, M Ahmed</div>
-            <div><em>POEM 2024</em> | Cited by: 4</div>
-            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/SmartCity-Blockchain-IPFS" target="_blank">GitHub</a></div>
+        <div class="project-card">
+            <div class="project-image">🔗</div>
+            <div class="project-content">
+                <strong>Chain Links on Wheels: IoV Security via Blockchain Integration</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
         </div>
 
-        <div class="publication-item">
-            <div class="title">Chain Links on Wheels: A Security Scheme for IoV Connectivity through Blockchain Integration</div>
-            <div>I Ehsan, MI Khalid, M Helfert, M Ahmed</div>
-            <div><em>ARES 2024, ACM</em> | Cited by: 1</div>
-            <div class="pub-link">🔗 <a href="#" target="_blank">Paper Link</a> | <a href="https://github.com/ibitsam-ehsan/IoV-Blockchain-Security" target="_blank">GitHub</a></div>
+        <div class="project-card">
+            <div class="project-image">🎣</div>
+            <div class="project-content">
+                <strong>Phishing URL Detection using Python and Machine Learning</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">⚠️</div>
+            <div class="project-content">
+                <strong>DDoS Attack Detection using Machine Learning</strong><br>
+                <a href="https://github.com/ibitsam-ehsan" target="_blank">🔗 GitHub Repository</a>
+            </div>
         </div>
     </section>
 
@@ -420,12 +620,6 @@
         <p><strong>Phone (China):</strong> +86 1580 129 9481</p>
         <p><strong>Phone (Pakistan):</strong> +92 334 7019009</p>
         <p><strong>Address:</strong> University of Chinese Academy of Sciences, Beijing, China</p>
-        <div class="social-links" style="margin-top:1rem; padding:0">
-            <a href="https://github.com/ibitsam-ehsan" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">🐙 GitHub</a>
-            <a href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">🔗 LinkedIn</a>
-            <a href="https://orcid.org/0000-0003-1804-8670" target="_blank" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">📝 ORCID</a>
-            <a href="mailto:ibtisamEhsan146@gmail.com" style="background:#2b6cb0; display:inline-block; margin:0.2rem;">📧 Email</a>
-        </div>
     </section>
 </div>
 
