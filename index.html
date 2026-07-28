@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Academic portfolio of Ibtisam Ehsan, an information security researcher working on privacy-preserving machine learning, blockchain, and IoT security.">
   <title>Ibtisam Ehsan — Information Security Researcher</title>
+  <script>
+    (() => {
+      const saved = localStorage.getItem("portfolio-theme");
+      const preferred = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
   <style>
     :root {
       --ink: #172033;
@@ -18,6 +25,25 @@
       --warning: #9a5b08;
       --radius: 14px;
       --content: 1100px;
+      --nav-bg: rgba(255, 255, 255, .92);
+      --hero-glow: rgba(36, 87, 214, .10);
+      --shadow: rgba(23, 32, 51, .12);
+    }
+
+    html[data-theme="dark"] {
+      --ink: #edf1f7;
+      --muted: #aeb8c8;
+      --accent: #8bb4ff;
+      --accent-soft: #1e3158;
+      --paper: #141a24;
+      --canvas: #0d121a;
+      --line: #293241;
+      --success: #58c992;
+      --warning: #f0b35c;
+      --nav-bg: rgba(20, 26, 36, .92);
+      --hero-glow: rgba(80, 137, 255, .16);
+      --shadow: rgba(0, 0, 0, .36);
+      color-scheme: dark;
     }
 
     * { box-sizing: border-box; }
@@ -28,6 +54,7 @@
       background: var(--canvas);
       font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
+      transition: color .25s ease, background .25s ease;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -41,7 +68,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid rgba(230, 232, 238, .9);
-      background: rgba(255, 255, 255, .92);
+      background: var(--nav-bg);
       backdrop-filter: blur(14px);
     }
     .nav {
@@ -58,7 +85,8 @@
       white-space: nowrap;
     }
     .nav-links { display: flex; align-items: center; gap: 22px; }
-    .nav-links a { color: #344054; font-size: .87rem; font-weight: 600; }
+    .nav-links a { color: var(--ink); font-size: .87rem; font-weight: 600; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
     .menu {
       display: none;
       border: 1px solid var(--line);
@@ -69,19 +97,35 @@
       font: inherit;
       cursor: pointer;
     }
+    .theme-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .theme-toggle .moon { display: none; }
+    html[data-theme="dark"] .theme-toggle .sun { display: none; }
+    html[data-theme="dark"] .theme-toggle .moon { display: block; }
 
     .hero {
       padding: 78px 0 66px;
       background:
-        radial-gradient(circle at 88% 15%, rgba(36, 87, 214, .10), transparent 28rem),
+        radial-gradient(circle at 88% 15%, var(--hero-glow), transparent 28rem),
         var(--paper);
       border-bottom: 1px solid var(--line);
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 190px;
+      grid-template-columns: 290px minmax(0, 1fr);
       align-items: center;
-      gap: 64px;
+      gap: clamp(38px, 6vw, 76px);
     }
     .eyebrow {
       margin-bottom: 14px;
@@ -92,32 +136,34 @@
       text-transform: uppercase;
     }
     .hero h1 { margin-bottom: 12px; font-size: clamp(2.6rem, 7vw, 5.1rem); }
-    .hero .role { margin-bottom: 18px; color: #344054; font-size: clamp(1.05rem, 2vw, 1.32rem); }
+    .hero .role { margin-bottom: 18px; color: var(--ink); font-size: clamp(1.05rem, 2vw, 1.32rem); }
     .hero .intro { max-width: 720px; color: var(--muted); font-size: 1.03rem; }
     .profile-photo {
-      width: 190px;
-      height: 220px;
+      width: 290px;
+      height: 345px;
       border: 1px solid var(--line);
       border-radius: 18px;
       object-fit: cover;
       filter: saturate(.9);
-      box-shadow: 0 18px 45px rgba(23, 32, 51, .12);
+      box-shadow: 0 18px 45px var(--shadow);
     }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .button {
+    .profile-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .profile-link {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       min-height: 42px;
       padding: 9px 15px;
       border: 1px solid var(--line);
       border-radius: 9px;
       background: var(--paper);
-      color: #344054;
+      color: var(--ink);
       font-size: .88rem;
       font-weight: 650;
     }
-    .button.primary { border-color: var(--accent); background: var(--accent); color: white; }
-    .button:hover { text-decoration: none; transform: translateY(-1px); }
+    .profile-link svg { width: 19px; height: 19px; flex: 0 0 auto; }
+    .profile-link.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .profile-link:hover { text-decoration: none; transform: translateY(-1px); box-shadow: 0 7px 18px var(--shadow); }
     .metrics { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 30px; color: var(--muted); font-size: .82rem; }
     .metrics strong { display: block; color: var(--ink); font-size: 1.15rem; }
 
@@ -142,7 +188,7 @@
     .panel h3 { margin-bottom: 7px; font-size: 1.02rem; }
     .meta { margin-bottom: 10px; color: var(--muted); font-size: .85rem; }
     .panel p:last-child, .panel ul:last-child { margin-bottom: 0; }
-    .plain-list { margin: 10px 0 0; padding-left: 19px; color: #475467; }
+    .plain-list { margin: 10px 0 0; padding-left: 19px; color: var(--muted); }
     .plain-list li + li { margin-top: 4px; }
 
     .tag-list { display: flex; flex-wrap: wrap; gap: 9px; }
@@ -151,7 +197,7 @@
       border: 1px solid #dce4f8;
       border-radius: 999px;
       background: var(--accent-soft);
-      color: #244aa5;
+      color: var(--accent);
       font-size: .79rem;
       font-weight: 650;
     }
@@ -178,9 +224,9 @@
       border-bottom: 1px solid var(--line);
     }
     .publication:last-child { border-bottom: 0; }
-    .pub-number { color: #98a2b3; font-size: .82rem; font-weight: 700; padding-top: 2px; }
+    .pub-number { color: var(--muted); font-size: .82rem; font-weight: 700; padding-top: 2px; }
     .publication h3 { margin-bottom: 6px; font-size: 1rem; }
-    .authors { margin-bottom: 5px; color: #475467; font-size: .85rem; }
+    .authors { margin-bottom: 5px; color: var(--muted); font-size: .85rem; }
     .venue { margin-bottom: 0; color: var(--muted); font-size: .82rem; }
     .me { color: var(--ink); font-weight: 700; }
 
@@ -206,7 +252,7 @@
       font-size: .81rem;
       font-weight: 650;
     }
-    .tech { color: #667085; }
+    .tech { color: var(--muted); }
 
     .compact-list { list-style: none; margin: 0; padding: 0; }
     .compact-list li {
@@ -229,13 +275,13 @@
     .contact-panel {
       padding: 30px;
       border-radius: var(--radius);
-      background: #172033;
-      color: white;
+      background: var(--ink);
+      color: var(--paper);
     }
     .contact-panel h3 { font-size: 1.35rem; }
-    .contact-panel p { max-width: 650px; color: #cfd5e1; }
+    .contact-panel p { max-width: 650px; opacity: .78; }
     .contact-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 20px; }
-    .contact-links a { color: white; font-size: .9rem; }
+    .contact-links a { color: var(--paper); font-size: .9rem; }
 
     footer { padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
 
@@ -248,7 +294,7 @@
         border: 1px solid var(--line);
         border-radius: 12px;
         background: var(--paper);
-        box-shadow: 0 18px 45px rgba(23, 32, 51, .12);
+        box-shadow: 0 18px 45px var(--shadow);
       }
       .nav-links.open { display: grid; grid-template-columns: repeat(2, 1fr); }
       .menu { display: block; }
@@ -259,7 +305,10 @@
       .wrap { width: min(calc(100% - 28px), var(--content)); }
       .hero { padding: 48px 0; }
       .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .profile-photo { grid-row: 1; width: 112px; height: 130px; border-radius: 14px; }
+      .profile-photo { width: min(230px, 68vw); height: 275px; border-radius: 14px; justify-self: center; }
+      .hero-copy { text-align: center; }
+      .hero .intro { margin-inline: auto; }
+      .profile-links, .metrics { justify-content: center; }
       .project-grid, .two-col { grid-template-columns: 1fr; }
       .project { min-height: auto; }
       .compact-list li { grid-template-columns: 1fr; gap: 3px; }
@@ -280,7 +329,6 @@
   <header class="site-header">
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="brand" href="#home">Ibtisam Ehsan</a>
-      <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
@@ -289,21 +337,49 @@
         <a href="#honors">Honors</a>
         <a href="#contact">Contact</a>
       </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+          <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.2A8.5 8.5 0 0 1 8.8 3.7 8.5 8.5 0 1 0 20.3 15.2Z"/></svg>
+        </button>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      </div>
     </nav>
   </header>
 
   <section class="hero" id="home">
     <div class="hero-grid wrap">
-      <div>
+      <img class="profile-photo" src="images/IBTISAM EHSAN_ PHOTO.jpg" alt="Portrait of Ibtisam Ehsan">
+      <div class="hero-copy">
         <p class="eyebrow">Information Security Researcher</p>
         <h1>Ibtisam Ehsan</h1>
         <p class="role">Graduate Research Assistant · University of Chinese Academy of Sciences</p>
         <p class="intro">I research privacy and security at the intersection of machine learning, blockchain, IoT, and decentralized systems, with a particular focus on membership inference attacks and lightweight defenses.</p>
-        <div class="actions">
-          <a class="button primary" href="mailto:ibtisamEhsan146@gmail.com">Email me</a>
-          <a class="button" href="https://scholar.google.com/citations?user=vQLI1YUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-          <a class="button" href="https://github.com/ibitsam-ehsan" target="_blank" rel="noopener">GitHub</a>
-          <a class="button" href="https://orcid.org/0000-0003-1804-8670" target="_blank" rel="noopener">ORCID</a>
+        <div class="profile-links" aria-label="Academic and social profiles">
+          <a class="profile-link primary" href="https://scholar.google.com/citations?user=vQLI1YUAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1.5 8 12 14l8.5-4.86V16h2V8L12 2Zm-6.5 9.7V17L12 21l6.5-4v-5.3L12 15.4 5.5 11.7Z"/></svg>
+            Google Scholar
+          </a>
+          <a class="profile-link" href="https://www.researchgate.net/profile/Ibtisam-Ehsan?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#00ccbb"/><text x="12" y="15.5" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="700">RG</text></svg>
+            ResearchGate
+          </a>
+          <a class="profile-link" href="https://github.com/ibitsam-ehsan" target="_blank" rel="noopener" aria-label="GitHub profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.57-.29-5.27-1.28-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.18c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+            GitHub
+          </a>
+          <a class="profile-link" href="https://www.linkedin.com/in/ibtisam-ehsan-93716a20b/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#0A66C2"/><path fill="#fff" d="M6.5 8.4H3.8V20h2.7V8.4ZM5.15 3A1.57 1.57 0 1 0 5.15 6.14 1.57 1.57 0 0 0 5.15 3ZM20.2 13.3c0-3.5-1.87-5.13-4.37-5.13-2.01 0-2.91 1.1-3.41 1.88V8.4H9.7V20h2.72v-5.74c0-1.51.29-2.97 2.16-2.97 1.84 0 1.86 1.72 1.86 3.07V20h2.72l1.04-6.7Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="profile-link" href="mailto:ibtisamEhsan146@gmail.com" aria-label="Email Ibtisam Ehsan">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            Email
+          </a>
+          <a class="profile-link" href="https://orcid.org/0000-0003-1804-8670" target="_blank" rel="noopener" aria-label="ORCID profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#a6ce39"/><text x="12" y="15.5" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="700">iD</text></svg>
+            ORCID
+          </a>
         </div>
         <div class="metrics" aria-label="Research metrics">
           <span><strong>307+</strong>Citations</span>
@@ -312,7 +388,6 @@
           <span><strong>9</strong>Research papers</span>
         </div>
       </div>
-      <img class="profile-photo" src="images/IBTISAM EHSAN_ PHOTO.jpg" alt="Portrait of Ibtisam Ehsan">
     </div>
   </section>
 
@@ -550,6 +625,21 @@
   <script>
     const menu = document.querySelector(".menu");
     const links = document.querySelector(".nav-links");
+    const themeToggle = document.querySelector(".theme-toggle");
+
+    function updateThemeLabel() {
+      const dark = document.documentElement.dataset.theme === "dark";
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+
+    updateThemeLabel();
+    themeToggle.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("portfolio-theme", next);
+      updateThemeLabel();
+    });
+
     menu.addEventListener("click", () => {
       const open = links.classList.toggle("open");
       menu.setAttribute("aria-expanded", String(open));
